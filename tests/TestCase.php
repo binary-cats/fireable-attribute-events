@@ -1,37 +1,36 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace BinaryCats\FireableAttributeEvents\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
+use BinaryCats\Html\HtmlServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+        $this->setUpDatabase();
     }
 
-    protected function getPackageProviders($app)
+    protected function setUpDatabase(): void
     {
-        return [
-            SkeletonServiceProvider::class,
-        ];
+        Schema::create('test_models', function ($table) {
+            $table->id();
+            $table->string('status')->nullable();
+            $table->string('value')->nullable();
+            $table->string('random')->nullable();
+            $table->timestamps();
+        });
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-
-        /*
-         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/database/migrations') as $migration) {
-            (include $migration->getRealPath())->up();
-         }
-         */
     }
 }

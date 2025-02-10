@@ -1,92 +1,91 @@
-# :package_description
+# Fireable Attribute Events
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
+Observe and trigger events based on attributes changes
+
+[![Tests](https://github.com/binarycats/fireable-attribute-events/actions/workflows/tests.yml/badge.svg)](https://github.com/binarycats/fireable-attribute-events/actions)  
+[![Latest Version](https://img.shields.io/packagist/v/binarycats/fireable-attribute-events.svg?style=flat-square)](https://packagist.org/packages/binarycats/fireable-attribute-events)  
+[![Total Downloads](https://img.shields.io/packagist/dt/binarycats/fireable-attribute-events.svg?style=flat-square)](https://packagist.org/packages/binarycats/fireable-attribute-events)
+
 ---
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
+composer require binarycats/fireable-attribute-events
 ```
 
 ## Usage
 
+Add the `FireableAttributes` Trait to Your Model:
+
+In any Eloquent model where you want to fire events on attribute changes, 
+use the `FireableAttributes` trait and define a `fireableAttributes` array:
+
+
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+use App\Events\OrderStatusChanged;
+use App\Events\OrderMarkedHighPriority;
+use App\Events\OrderMarkedUrgent;
+use BinaryCats\FireableAttributeEvents\FireableAttributes;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    use FireableAttributes;
+
+    protected array $fireableAttributes = [
+        'status' => OrderStatusChanged::class,
+        'priority' => [
+            'high' => OrderMarkedHighPriority::class,
+            'urgent' => \OrderMarkedUrgent::class,
+        ],
+    ];
+}
+```
+
+- **Direct mapping**: If status changes, it fires OrderStatusChanged.
+- **Value-based mapping**: If priority changes to 'high', it fires OrderMarkedHighPriority; if 'urgent', it fires OrderMarkedUrgent.
+
+Each event should accept the model as a constructor parameter.
+
+Events Fire Automatically When Attributes Change.
+Once a model using `FireableAttributes` is updated, the package will automatically dispatch the corresponding event:
+
+```php
+$order = Order::find(1);
+
+$order->update(['status' => 'shipped']); // 🚀 Fires OrderStatusChanged event
+$order->update(['priority' => 'urgent']); // 🚀 Fires OrderMarkedUrgent event
 ```
 
 ## Testing
 
 ```bash
-composer test
+vendor/bin/pest
 ```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security Vulnerabilities
+## Security
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+If you discover any security related issues, please email cyrill.kalita@gmail.com instead of using issue tracker.
+
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Cyrill Kalita](https://github.com/binary-cats)
 - [All Contributors](../../contributors)
+
+## Support us
+
+Binary Cats is a webdesign agency based in Illinois, US.
 
 ## License
 
