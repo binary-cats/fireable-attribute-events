@@ -2,10 +2,6 @@
 
 Observe and trigger events based on attributes changes
 
-[![Tests](https://github.com/binarycats/fireable-attribute-events/actions/workflows/tests.yml/badge.svg)](https://github.com/binarycats/fireable-attribute-events/actions)  
-[![Latest Version](https://img.shields.io/packagist/v/binarycats/fireable-attribute-events.svg?style=flat-square)](https://packagist.org/packages/binarycats/fireable-attribute-events)  
-[![Total Downloads](https://img.shields.io/packagist/dt/binarycats/fireable-attribute-events.svg?style=flat-square)](https://packagist.org/packages/binarycats/fireable-attribute-events)
-
 ---
 
 ## Installation
