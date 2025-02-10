@@ -2,19 +2,19 @@
 
 namespace BinaryCats\FireableAttributeEvents\Tests\stubs;
 
-use Illuminate\Database\Eloquent\Model;
 use BinaryCats\FireableAttributeEvents\FireableAttributes;
+use Illuminate\Database\Eloquent\Model;
 
 class TestModel extends Model
 {
     use FireableAttributes;
 
-    /** @var array  */
+    /** @var array */
     protected $guarded = [];
 
-    /** @var array  */
+    /** @var array */
     protected array $fireableAttributes = [
-        'value' => ValueChanged::class,
+        'value'  => ValueChanged::class,
         'status' => [
             'open' => StatusChangedToOpen::class,
         ],

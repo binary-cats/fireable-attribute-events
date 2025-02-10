@@ -14,19 +14,22 @@ class Fireable
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @return static
+     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
+     *
+     * @return $this
      */
     public static function make(Model $model): static
     {
         return app(static::class, [
-            'model' => $model,
+            'model'              => $model,
             'fireableAttributes' => $model->getFireableAttributes(),
         ]);
     }
 
     /**
      * Match updated attributes with fireable ones and trigger events.
+     *
+     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
      *
      * @return void
      */
@@ -52,7 +55,8 @@ class Fireable
      * Get event name for specified attribute and assigned value pair.
      *
      * @param string $attribute
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return string|null
      */
     private function getEventName(string $attribute, mixed $value): ?string
@@ -65,6 +69,7 @@ class Fireable
      * Get event name if values are not specified.
      *
      * @param string $attribute
+     *
      * @return string|null
      */
     private function getEventNameForAttribute(string $attribute): ?string
@@ -80,7 +85,8 @@ class Fireable
      * Get event name if there are specified values.
      *
      * @param string $attribute
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return string|null
      */
     private function getEventNameForExactValue(string $attribute, mixed $value): ?string
