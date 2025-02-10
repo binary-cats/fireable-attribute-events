@@ -21,7 +21,7 @@ class Fireable
     public static function make(Model $model): static
     {
         return app(static::class, [
-            'model' => $model,
+            'model'              => $model,
             'fireableAttributes' => $model->getFireableAttributes(),
         ]);
     }
