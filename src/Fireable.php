@@ -14,18 +14,20 @@ class Fireable
     }
 
     /**
-     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
-     * @return $this
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @return static
      */
-    public static function make($model): static
+    public static function make(Model $model): static
     {
-        return new static($model, $model->getFireableAttributes());
+        return app(static::class, [
+            'model' => $model,
+            'fireableAttributes' => $model->getFireableAttributes(),
+        ]);
     }
 
     /**
      * Match updated attributes with fireable ones and trigger events.
      *
-     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
      * @return void
      */
     public function processAttributes(): void
