@@ -2,11 +2,9 @@
 
 namespace BinaryCats\FireableAttributeEvents\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
-use BinaryCats\Html\HtmlServiceProvider;
 
 class TestCase extends Orchestra
 {
