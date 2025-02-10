@@ -18,9 +18,12 @@ class Fireable
      *
      * @return $this
      */
-    public static function make($model): static
+    public static function make(Model $model): static
     {
-        return new static($model, $model->getFireableAttributes());
+        return app(static::class, [
+            'model' => $model,
+            'fireableAttributes' => $model->getFireableAttributes(),
+        ]);
     }
 
     /**
