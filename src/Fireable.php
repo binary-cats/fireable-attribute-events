@@ -14,7 +14,7 @@ class Fireable
     }
 
     /**
-     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
+     * @param Model $model
      *
      * @return $this
      */
@@ -28,8 +28,6 @@ class Fireable
 
     /**
      * Match updated attributes with fireable ones and trigger events.
-     *
-     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
      */
     public function processAttributes(): void
     {
