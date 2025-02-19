@@ -9,8 +9,6 @@ trait FireableAttributes
 {
     /**
      * Process attributes on model update.
-     *
-     * @return void
      */
     protected static function bootFireableAttributes(): void
     {
@@ -19,8 +17,6 @@ trait FireableAttributes
 
     /**
      * Get a list of model's "fireable" attributes.
-     *
-     * @return array
      */
     public function getFireableAttributes(): array
     {

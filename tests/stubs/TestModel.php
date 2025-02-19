@@ -12,9 +12,8 @@ class TestModel extends Model
     /** @var array */
     protected $guarded = [];
 
-    /** @var array */
     protected array $fireableAttributes = [
-        'value'  => ValueChanged::class,
+        'value' => ValueChanged::class,
         'status' => [
             'open' => StatusChangedToOpen::class,
         ],
