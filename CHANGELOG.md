@@ -2,6 +2,10 @@
 
 All notable changes to `html` will be documented in this file.
 
+## 1.1 | Add support for Laravel 12 - 2025-02-19
+
+Bump support for Laravel 12
+
 ## v1.0 | Release - 2025-02-10
 
 ### What's Changed
