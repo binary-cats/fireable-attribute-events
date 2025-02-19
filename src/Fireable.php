@@ -14,19 +14,6 @@ class Fireable
     }
 
     /**
-     * @param Model $model
-     *
-     * @return $this
-     */
-    public static function make(Model $model): static
-    {
-        return app(static::class, [
-            'model'              => $model,
-            'fireableAttributes' => $model->getFireableAttributes(),
-        ]);
-    }
-
-    /**
      * Match updated attributes with fireable ones and trigger events.
      */
     public function processAttributes(): void

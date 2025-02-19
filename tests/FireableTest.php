@@ -51,11 +51,3 @@ it('does not fire events for non-fireable attributes', function () {
     // Ensure that no events are dispatched
     Event::assertNothingDispatched();
 });
-
-it('can create Fireable statically', function () {
-    $model = TestModel::create(['status' => 'pending']);
-
-    $fireable = Fireable::make($model);
-
-    expect($fireable)->toBeInstanceOf(Fireable::class);
-});

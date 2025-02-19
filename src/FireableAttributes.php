@@ -12,7 +12,7 @@ trait FireableAttributes
      */
     protected static function bootFireableAttributes(): void
     {
-        static::updated(fn ($model) => Fireable::make($model)->processAttributes());
+        static::updated(fn ($model) => (new Fireable($model, $model->getFireableAttributes()))->processAttributes());
     }
 
     /**
