@@ -1,6 +1,8 @@
+![](https://banners.beyondco.de/Fireable%20Attribute%20Events.png?theme=light&packageManager=composer+require&packageName=binary-cats%2Ffireable-attribute-events&pattern=architect&style=style_1&description=Observe+and+trigger+events+based+on+changes+to+your+Eloquent+attributes&md=1&showWatermark=1&fontSize=100px&images=fire)
+
 # Fireable Attribute Events
 
-Observe and trigger events based on attributes changes
+Observe and trigger events based on Eloquent model attributes changes
 
 ---
 
@@ -9,7 +11,7 @@ Observe and trigger events based on attributes changes
 You can install the package via Composer:
 
 ```bash
-composer require binarycats/fireable-attribute-events
+composer require binary-cats/fireable-attribute-events
 ```
 
 ## Usage
