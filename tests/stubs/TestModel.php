@@ -13,7 +13,7 @@ class TestModel extends Model
     protected $guarded = [];
 
     protected array $fireableAttributes = [
-        'value' => ValueChanged::class,
+        'value'  => ValueChanged::class,
         'status' => [
             'open' => StatusChangedToOpen::class,
         ],

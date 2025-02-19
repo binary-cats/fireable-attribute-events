@@ -6,5 +6,6 @@ class StatusChangedToOpen
 {
     public function __construct(
         public readonly TestModel $model,
-    ) {}
+    ) {
+    }
 }

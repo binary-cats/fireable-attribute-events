@@ -10,16 +10,18 @@ class Fireable
     public function __construct(
         protected readonly Model $model,
         protected readonly array $fireableAttributes = [],
-    ) {}
+    ) {
+    }
 
     /**
-     * @param  \BinaryCats\FireableAttributeEvents\FireableAttributes|Model  $model
+     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
+     *
      * @return $this
      */
     public static function make(Model $model): static
     {
         return app(static::class, [
-            'model' => $model,
+            'model'              => $model,
             'fireableAttributes' => $model->getFireableAttributes(),
         ]);
     }
@@ -27,7 +29,7 @@ class Fireable
     /**
      * Match updated attributes with fireable ones and trigger events.
      *
-     * @param  \BinaryCats\FireableAttributeEvents\FireableAttributes|Model  $model
+     * @param \BinaryCats\FireableAttributeEvents\FireableAttributes|Model $model
      */
     public function processAttributes(): void
     {
