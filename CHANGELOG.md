@@ -2,6 +2,10 @@
 
 All notable changes to `html` will be documented in this file.
 
+## v1.2 - 2025-12-05
+
+- Bump actions versions
+
 ## 1.1 | Add support for Laravel 12 - 2025-02-19
 
 Bump support for Laravel 12
