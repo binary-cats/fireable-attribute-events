@@ -2,8 +2,10 @@
 
 namespace BinaryCats\FireableAttributeEvents;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
  */
 trait FireableAttributes
 {
