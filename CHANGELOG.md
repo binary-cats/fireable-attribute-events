@@ -2,6 +2,16 @@
 
 All notable changes to `html` will be documented in this file.
 
+## v1.3 | Laravel 13 - 2026-03-19
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/binary-cats/fireable-attribute-events/pull/10
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/binary-cats/fireable-attribute-events/pull/11
+* Update dependencies and simplify class constructors by @cyrillkalita in https://github.com/binary-cats/fireable-attribute-events/pull/12
+
+**Full Changelog**: https://github.com/binary-cats/fireable-attribute-events/compare/1.2.0...1.3.0
+
 ## v1.2 - 2025-12-05
 
 - Bump actions versions
