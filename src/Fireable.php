@@ -10,8 +10,7 @@ class Fireable
     public function __construct(
         protected readonly Model $model,
         protected readonly array $fireableAttributes = [],
-    ) {
-    }
+    ) {}
 
     /**
      * Match updated attributes with fireable ones and trigger events.
