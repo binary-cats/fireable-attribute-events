@@ -83,7 +83,7 @@ You're free to use this package, but if it makes it to your production environme
 
 ## Support us
 
-Binary Cats is a webdesign agency based in Illinois, US.
+[Binary Cats](https://binarycats.dev) is a webdesign agency based in Illinois, US.
 
 ## License
 
