@@ -2,6 +2,14 @@
 
 All notable changes to `html` will be documented in this file.
 
+## v1.4 | Dependencies bump - 2026-04-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/binary-cats/fireable-attribute-events/pull/14
+
+**Full Changelog**: https://github.com/binary-cats/fireable-attribute-events/compare/1.3.0...1.4.0
+
 ## v1.3 | Laravel 13 - 2026-03-19
 
 ### What's Changed
